@@ -59,6 +59,19 @@ class _ScndScreenState extends State<ScndScreen> {
                 Text('${userDetails['phone']}'),
               ],
             ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  userDetails = {
+                    'name': 'Ashar Ahmed',
+                    'email': 'ashar_ahmed@aptechnorth.edu.pk',
+                    'phone': '+923132131242',
+                    'designation': 'Software Engineer',
+                  };
+                });
+              },
+              child: Text('Change Name'),
+            ),
           ],
         ),
       )
