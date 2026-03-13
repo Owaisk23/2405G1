@@ -1,6 +1,7 @@
 import 'package:firstproject/firstscreen.dart';
 import 'package:firstproject/scndScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:firstproject/drawerSide.dart' as drawerSidebar;
 
 class Product extends StatefulWidget {
   const Product({ Key? key }) : super(key: key);
@@ -26,7 +27,7 @@ class _ProductState extends State<Product> {
         foregroundColor: Colors.white,
         centerTitle: true,
       ),
-      // drawer: drawerSidebar.DrawerSidebar(),
+      drawer: drawerSidebar.DrawerSide(),
       body: Center(
         child: Container(
           width: 300,
