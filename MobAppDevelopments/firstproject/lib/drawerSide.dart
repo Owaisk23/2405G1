@@ -1,3 +1,4 @@
+import 'package:firstproject/dynamicList.dart';
 import 'package:firstproject/firstscreen.dart';
 import 'package:firstproject/product.dart';
 import 'package:firstproject/scndScreen.dart';
@@ -42,13 +43,13 @@ class _DrawerSideState extends State<DrawerSide> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => Firstscreen()));
             },
           ),
-          // ListTile(
-          //   leading: Icon(Icons.notifications),
-          //   title: Text("Dynamic List Screen"),
-          //   onTap: (){
-          //     Navigator.push(context, MaterialPageRoute(builder: (context) => DynamicList()));
-          //   },
-          // ),
+          ListTile(
+            leading: Icon(Icons.notifications),
+            title: Text("Dynamic List Screen"),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => DynamicList()));
+            },
+          ),
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text("Product Screen"),
