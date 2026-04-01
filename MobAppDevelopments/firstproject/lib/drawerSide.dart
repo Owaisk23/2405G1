@@ -1,3 +1,4 @@
+import 'package:firstproject/apiFetch.dart';
 import 'package:firstproject/dynamicList.dart';
 import 'package:firstproject/firstscreen.dart';
 import 'package:firstproject/product.dart';
@@ -55,6 +56,13 @@ class _DrawerSideState extends State<DrawerSide> {
             title: Text("Product Screen"),
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => Product()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.notifications),
+            title: Text("Product Screen"),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ApiFetch()));
             },
           ),
           // ListTile(
