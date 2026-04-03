@@ -1,3 +1,4 @@
+import 'package:crud/Screens/addproduct.dart';
 import 'package:crud/Screens/products.dart';
 import 'package:crud/firebase_options.dart';
 import 'package:device_preview/device_preview.dart';

@@ -9,7 +9,8 @@ class Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
-    var products = FirebaseFirestore.instance.collection('cars').snapshots();
+    var cars = FirebaseFirestore.instance.collection('cars').snapshots();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +21,7 @@ class _ProductsState extends State<Products> {
       ),
       body: Center(
         child: StreamBuilder(
-          stream: products,
+          stream: cars,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               var productList = snapshot.data!.docs;
