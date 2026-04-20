@@ -1,6 +1,8 @@
 import 'package:crud/Screens/addproduct.dart';
 import 'package:crud/Screens/products.dart';
 import 'package:crud/Screens/signup.dart';
+import 'package:crud/Screens/signupgoogle.dart';
+import 'package:crud/Screens/splashScreen.dart';
 import 'package:crud/firebase_options.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -30,7 +32,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: Signup(),
+      home: SplashScreen(),
+      routes: {
+        // "/signup": (context) => Signup(),
+        "/signup": (context) => Signupgoogle(),
+        // "/add": (context) => AddProduct(),
+        "/products": (context) => Products(),
+      },
     );
   }
 }
