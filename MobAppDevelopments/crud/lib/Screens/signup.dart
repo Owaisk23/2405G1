@@ -53,7 +53,7 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
 
-                // Navigator.pushNamed(context, "/login"),
+                Navigator.pushNamed(context, "/login"),
               },
             )
             .catchError(

@@ -1,4 +1,5 @@
 import 'package:crud/Screens/addproduct.dart';
+import 'package:crud/Screens/login.dart';
 import 'package:crud/Screens/products.dart';
 import 'package:crud/Screens/signup.dart';
 import 'package:crud/Screens/signupgoogle.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       routes: {
         // "/signup": (context) => Signup(),
+        // "/login": (context) => Login(),
         "/signup": (context) => Signupgoogle(),
         // "/add": (context) => AddProduct(),
         "/products": (context) => Products(),

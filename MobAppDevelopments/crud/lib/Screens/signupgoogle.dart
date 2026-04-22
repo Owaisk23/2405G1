@@ -30,6 +30,8 @@ class _SignupgoogleState extends State<Signupgoogle> {
               UserCredential userCredential = await signInWithGoogle();
               // Handle successful sign-in
               print('Signed in as ${userCredential.user?.displayName}');
+
+              Navigator.pushNamed(context, "/products");
             } catch (e) {
               // Handle sign-in error
               print('Error signing in with Google: $e');
