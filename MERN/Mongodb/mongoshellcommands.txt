@@ -1,0 +1,9 @@
+1. mongosh
+2. show dbs
+3. use dbname
+4. show collections
+5. db.mobiles.insertOne({name: "Techno Spark 25", price: 54500, desc: "best mob of techno"})
+6. db.mobiles.find()
+7. db.mobiles.insertMany([{name: "Techno Spark 25", price: 54500, desc: "best mob of techno"}, {name: "IPhone 11 Pro", price: 42500, desc: "best mob of apple"}, {name: "Samsung A32", price: 124500, desc: "best mob of samsung"}, {name: "Motorolla G Stylus", price: 34500, desc: "best mob of motorolla"}])
+8. db.mobiles.deleteOne({_id: ObjectId("6a22e3f26edaf267af6966a9")})
+
