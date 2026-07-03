@@ -4,6 +4,7 @@ import MyName from "./components/MyName";
 import Footer from "./components/Footer";
 import Bachra from "./assets/bachra.jpg";
 import Card from "./components/Card";
+import { useState } from "react";
 function App() {
   const employees = [
     { name: "UBAID ULLAH", profession: "State Agent" },
@@ -56,8 +57,26 @@ function App() {
     },
   ];
 
+  const [count, setCount] = useState(0);
+    let [user, setUser] = useState({
+    name: "Owais Ahmed Khan",
+    profession: "Software Developer",
+  });
+  // const [image, setImage] = useState(image);
+  const handleIncrement = () => {
+    setCount(count + 1);
+    // count++;
+    console.log(count);
+  };
+   const updateUser = () => {
+    setUser({ ...user, profession: "Full Stack Developer" });
+    // console.log(user);
+  };
+
+
   return (
     <div>
+      
       <Navbar />
       {/* <h1 className='heading'>UBAID ULLAH!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
       <p className='bg-warning'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam rem nam ut in quo eligendi voluptate aliquam corporis libero architecto itaque numquam voluptatem nesciunt expedita id nisi repudiandae praesentium rerum sequi, quia neque dolor quaerat vero sed. Est blanditiis, impedit aliquid pariatur harum eos eius, enim maiores labore nemo qui!</p> */}
@@ -66,13 +85,27 @@ function App() {
       <MyName name={"Subhan"} profession={"Khaadi Outlet"} />   
       <MyName name={"Kamran"} profession={"Gym Trainer"} />    */}
 
-      {employees.map((employee, index) => (
+
+      <h2>{count}</h2>
+      <button className="btn btn-primary" onClick={handleIncrement}>
+        Increment({count})
+      </button>
+
+       <h2>
+        Name: {user.name} Profession: {user.profession}
+      </h2>
+      <button className="btn btn-primary" onClick={updateUser}>
+        Update User
+      </button> 
+
+
+      {/* {employees.map((employee, index) => (
         <MyName
           key={index}
           name={employee.name}
           profession={employee.profession}
         />
-      ))}
+      ))} */}
 
       {cardData.map((card, index) => (
         <Card
