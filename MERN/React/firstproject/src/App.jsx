@@ -4,6 +4,7 @@ import MyName from "./components/MyName";
 import Footer from "./components/Footer";
 import Bachra from "./assets/bachra.jpg";
 import Card from "./components/Card";
+import Todo from "./components/Todo";
 import { useState } from "react";
 function App() {
   const employees = [
@@ -85,8 +86,10 @@ function App() {
       <MyName name={"Subhan"} profession={"Khaadi Outlet"} />   
       <MyName name={"Kamran"} profession={"Gym Trainer"} />    */}
 
+      <Todo />
 
-      <h2>{count}</h2>
+
+      {/* <h2>{count}</h2>
       <button className="btn btn-primary" onClick={handleIncrement}>
         Increment({count})
       </button>
@@ -96,7 +99,7 @@ function App() {
       </h2>
       <button className="btn btn-primary" onClick={updateUser}>
         Update User
-      </button> 
+      </button>  */}
 
 
       {/* {employees.map((employee, index) => (
@@ -107,20 +110,20 @@ function App() {
         />
       ))} */}
 
-      {cardData.map((card, index) => (
+      {/* {cardData.map((card, index) => (
         <Card
           key={index}
           title={card.title}
           desc={card.desc}
           img={card.img}
         />
-      ))}
+      ))} */}
 
-      <img src={Bachra} alt="" />
+      {/* <img src={Bachra} alt="" />
       <img
         src="https://res.cloudinary.com/dnfiycc46/image/upload/v1764047078/2309B2/o7tqhkv6wgvktval6epd.jpg"
         alt=""
-      />
+      /> */}
       <Footer />
     </div>
   );
