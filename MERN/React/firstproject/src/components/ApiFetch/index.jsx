@@ -7,6 +7,9 @@ const index = () => {
     const data = await response.json()
     console.log(data)
   }
+  useEffect(() => {
+    getProducts()
+  })
   return (
     <>
       <h1>API Fetch Example</h1>
@@ -14,9 +17,9 @@ const index = () => {
       <button className='btn btn-primary' onClick={() => setCount(count + 1)}>
         Increment
         </button>
-      <button className='btn btn-primary' onClick={getProducts}>
+      {/* <button className='btn btn-primary' onClick={getProducts}>
         Get Products
-      </button>
+      </button> */}
     </>
   )
 }
