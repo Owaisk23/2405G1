@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Bachra from "./assets/bachra.jpg";
 import Card from "./components/Card";
 import Todo from "./components/Todo";
+import ApiFetch from "./components/ApiFetch";
 import { useState } from "react";
 function App() {
   const employees = [
@@ -85,8 +86,8 @@ function App() {
       <MyName name={"Ramiz"} profession={"INVIGILATOR "} />   
       <MyName name={"Subhan"} profession={"Khaadi Outlet"} />   
       <MyName name={"Kamran"} profession={"Gym Trainer"} />    */}
-
-      <Todo />
+      <ApiFetch />
+      {/* <Todo /> */}
 
 
       {/* <h2>{count}</h2>
@@ -124,7 +125,7 @@ function App() {
         src="https://res.cloudinary.com/dnfiycc46/image/upload/v1764047078/2309B2/o7tqhkv6wgvktval6epd.jpg"
         alt=""
       /> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
