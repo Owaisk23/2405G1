@@ -6,6 +6,8 @@ import Bachra from "./assets/bachra.jpg";
 import Card from "./components/Card";
 import Todo from "./components/Todo";
 import ApiFetch from "./components/ApiFetch";
+import Signup from "./components/Signup";
+import { Route, Routes } from "react-router";
 import { useState } from "react";
 function App() {
   const employees = [
@@ -60,7 +62,7 @@ function App() {
   ];
 
   const [count, setCount] = useState(0);
-    let [user, setUser] = useState({
+  let [user, setUser] = useState({
     name: "Owais Ahmed Khan",
     profession: "Software Developer",
   });
@@ -70,15 +72,13 @@ function App() {
     // count++;
     console.log(count);
   };
-   const updateUser = () => {
+  const updateUser = () => {
     setUser({ ...user, profession: "Full Stack Developer" });
     // console.log(user);
   };
 
-
   return (
     <div>
-      
       <Navbar />
       {/* <h1 className='heading'>UBAID ULLAH!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
       <p className='bg-warning'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam rem nam ut in quo eligendi voluptate aliquam corporis libero architecto itaque numquam voluptatem nesciunt expedita id nisi repudiandae praesentium rerum sequi, quia neque dolor quaerat vero sed. Est blanditiis, impedit aliquid pariatur harum eos eius, enim maiores labore nemo qui!</p> */}
@@ -88,7 +88,6 @@ function App() {
       <MyName name={"Kamran"} profession={"Gym Trainer"} />    */}
       <ApiFetch />
       {/* <Todo /> */}
-
 
       {/* <h2>{count}</h2>
       <button className="btn btn-primary" onClick={handleIncrement}>
@@ -101,7 +100,6 @@ function App() {
       <button className="btn btn-primary" onClick={updateUser}>
         Update User
       </button>  */}
-
 
       {/* {employees.map((employee, index) => (
         <MyName
@@ -125,7 +123,21 @@ function App() {
         src="https://res.cloudinary.com/dnfiycc46/image/upload/v1764047078/2309B2/o7tqhkv6wgvktval6epd.jpg"
         alt=""
       /> */}
-      {/* <Footer /> */}
+      <Routes>
+        <Route path="/home" element={<h1>Home Page</h1>} />
+        <Route path="/card" element={<Card />} />
+
+        {/* Group Routing & Nested Routing */}
+        <Route path="/admin/">
+          <Route path="signup" element={<Signup />} />
+          {/* <Route path="login" element={<LogIn/>}/> */}
+
+          {/* <Route path="products">
+      <Route path="add" element={<AddProduct/>}/>
+    </Route> */}
+        </Route>
+      </Routes>
+      <Footer />
     </div>
   );
 }
