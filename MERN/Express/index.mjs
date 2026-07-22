@@ -1,14 +1,33 @@
 // const express = require('express');
 import express from 'express';
+import mongoose from 'mongoose';
+import path from 'path';
 const app = express()
 const port = 3000
-import path from 'path';
+
 
 const dirname = path.resolve();
 app.use(express.json()); 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+
+// getting-started.js
+// const mongoose = require('mongoose');
+
+
+
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb+srv://owaisahmedkhan:owais123@cluster0.mbgw7ps.mongodb.net/Mart');
+
+  console.log("MongoDB Connected Successfully!")
+
+  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+}
+
+
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+// })
 
 let products = [
     {
@@ -1810,6 +1829,9 @@ let products = [
   ];
 
 
+
+
+  
 // app.get('/contact', (req, res) => {
 //   res.send('Contact App!')
 // })
@@ -1861,38 +1883,38 @@ let products = [
 
 
 
-// // Query Parameters (They are option)
-app.get('/categories', (req, res) => {
-  if (req.query.name) {
-    res.json({ name: "Category: " + req.query.name })
-  }
-  else {
-    res.json({ name: "All Categories" })
-  }
-})
+// // // Query Parameters (They are option)
+// app.get('/categories', (req, res) => {
+//   if (req.query.name) {
+//     res.json({ name: "Category: " + req.query.name })
+//   }
+//   else {
+//     res.json({ name: "All Categories" })
+//   }
+// })
 
-// // Request Body (They are used to send data to server)
-app.get('/contact', (req, res) => {
-  const name = req.body.name;
-  const age = req.body.age;
-  const city = req.body.city;
+// // // Request Body (They are used to send data to server)
+// app.get('/contact', (req, res) => {
+//   const name = req.body.name;
+//   const age = req.body.age;
+//   const city = req.body.city;
 
-  res.json({ name: name, age: age, city: city })
-})
+//   res.json({ name: name, age: age, city: city })
+// })
 
 
-// TAMAAM PRODUCTS FETCH KRKE LE AAO
-app.get('/products', (req, res) => {
-  try {
-    res.status(200).json({ message: "Products fetched successfully", products: products });
-  }
-  catch (error) {
-    console.error("Error fetching products: ", error);
-    res.status(500).json({ message: "Error fetching products", error: error.message });
-  }
+// // TAMAAM PRODUCTS FETCH KRKE LE AAO
+// app.get('/products', (req, res) => {
+//   try {
+//     res.status(200).json({ message: "Products fetched successfully", products: products });
+//   }
+//   catch (error) {
+//     console.error("Error fetching products: ", error);
+//     res.status(500).json({ message: "Error fetching products", error: error.message });
+//   }
 
-}
-)
+// }
+// )
 
 
 
