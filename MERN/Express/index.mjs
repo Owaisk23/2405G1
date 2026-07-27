@@ -10,8 +10,8 @@ const port = 3000
 app.use(express.json()); 
 
 const dirname = path.resolve();
-
-const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'));
+const dataPath = './data.json';
+const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
 
 app.get('/products', (req, res) => {
@@ -26,6 +26,79 @@ app.get('/products', (req, res) => {
 }
 )
 
+
+
+app.post('/addproduct', (req, res) => {
+  try {
+    const newProduct = req.body;
+
+    // basic validation (optional but recommended)
+    if (!newProduct.title || !newProduct.price) {
+      return res.status(400).json({ message: "name and price are required" });
+    }
+
+    // add new product
+    products.push(newProduct);
+
+    // save back to file
+    fs.writeFileSync(
+      dataPath,
+      JSON.stringify({ products }, null, 2),
+      'utf-8'
+    );
+
+    res.status(201).json({
+      message: "Product added successfully",
+      product: newProduct
+    });
+
+  } catch (error) {
+    console.error("error adding product:", error);
+    res.status(500).json({
+      message: "error adding product",
+      error: error.message
+    });
+  }
+});
+
+
+
+
+// //Delete product
+
+
+app.delete("/deleteproduct/:id", (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const deletedProduct = products.find((item) => item.id == id);
+
+    if (!deletedProduct) {
+      return res.status(404).json({
+        message: "Product not found",
+      });
+    }
+
+    products = products.filter((item) => item.id != id);
+
+    // Save updated array to file
+    fs.writeFileSync(
+      "./data.json",
+      JSON.stringify(products, null, 2)
+    );
+
+    res.status(200).json({
+      message: "Product deleted successfully",
+      product: deletedProduct,
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
 
 
 // getting-started.js

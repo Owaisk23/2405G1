@@ -1,4 +1,5 @@
-[
+{
+  "products": [
     {
       "id": 1,
       "title": "Essence Mascara Lash Princess",
@@ -1794,5 +1795,20 @@
         "https://cdn.dummyjson.com/product-images/groceries/kiwi/1.webp"
       ],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/kiwi/thumbnail.webp"
+    },
+    {
+      "id": 30,
+      "title": "SUBHAN DON",
+      "description": "DONO KA DON SUBHAN DON",
+      "category": "ubaid",
+      "price": 9.99,
+      "discountPercentage": 1.19,
+      "rating": 3.86,
+      "stock": 3,
+      "tags": [
+        "banks",
+        "streets"
+      ]
     }
   ]
+}
