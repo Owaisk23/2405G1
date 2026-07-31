@@ -3,6 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 import fs from 'node:fs';
+import productRouter from './routes/productRoutes.mjs';
 const app = express()
 const port = 3000
 
@@ -2008,6 +2009,8 @@ let products = [
 // }
 // )
 
+
+app.use('/products', productRouter);
 
 
 app.listen(port, () => {

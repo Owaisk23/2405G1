@@ -28,38 +28,42 @@ let index = (req, res) => {
   res.json(postObj);
 }
 
+// CREATE ADD PRODUCT
 let addProduct = (req, res) => {
-try {
-    const newProduct = req.body;
-
-    // basic validation (optional but recommended)
-    if (!newProduct.title || !newProduct.price) {
-      return res.status(400).json({ message: "name and price are required" });
+  try {
+      const newProduct = req.body;
+  
+      // basic validation (optional but recommended)
+      if (!newProduct.title || !newProduct.price) {
+        return res.status(400).json({ message: "name and price are required" });
+      }
+  
+      // add new product
+      products.push(newProduct);
+  
+      // save back to file
+      fs.writeFileSync(
+        dataPath,
+        JSON.stringify({ products }, null, 2),
+        'utf-8'
+      );
+  
+      res.status(201).json({
+        message: "Product added successfully",
+        product: newProduct
+      });
+  
+    } catch (error) {
+      console.error("error adding product:", error);
+      res.status(500).json({
+        message: "error adding product",
+        error: error.message
+      });
     }
-
-    // add new product
-    products.push(newProduct);
-
-    // save back to file
-    fs.writeFileSync(
-      dataPath,
-      JSON.stringify({ products }, null, 2),
-      'utf-8'
-    );
-
-    res.status(201).json({
-      message: "Product added successfully",
-      product: newProduct
-    });
-
-  } catch (error) {
-    console.error("error adding product:", error);
-    res.status(500).json({
-      message: "error adding product",
-      error: error.message
-    });
-  }
 }
+
+
+
 
 let deleteProduct = (req, res) => {
      try {
