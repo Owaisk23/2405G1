@@ -10,96 +10,96 @@ const port = 3000
 
 app.use(express.json()); 
 
-const dirname = path.resolve();
-const dataPath = './data.json';
-const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+// const dirname = path.resolve();
+// const dataPath = './data.json';
+// const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
 
-app.get('/products', (req, res) => {
-  try {
-    res.status(200).json({message: "Products fetched successfully", products: data}); 
-  }
-  catch (error) {
-    console.error("Error fetching products: ", error);
-    res.status(500).json({message: "Error fetching products", error: error.message});
-  }
+// app.get('/products', (req, res) => {
+//   try {
+//     res.status(200).json({message: "Products fetched successfully", products: data}); 
+//   }
+//   catch (error) {
+//     console.error("Error fetching products: ", error);
+//     res.status(500).json({message: "Error fetching products", error: error.message});
+//   }
 
-}
-)
-
-
-
-app.post('/addproduct', (req, res) => {
-  try {
-    const newProduct = req.body;
-
-    // basic validation (optional but recommended)
-    if (!newProduct.title || !newProduct.price) {
-      return res.status(400).json({ message: "name and price are required" });
-    }
-
-    // add new product
-    products.push(newProduct);
-
-    // save back to file
-    fs.writeFileSync(
-      dataPath,
-      JSON.stringify({ products }, null, 2),
-      'utf-8'
-    );
-
-    res.status(201).json({
-      message: "Product added successfully",
-      product: newProduct
-    });
-
-  } catch (error) {
-    console.error("error adding product:", error);
-    res.status(500).json({
-      message: "error adding product",
-      error: error.message
-    });
-  }
-});
+// }
+// )
 
 
 
+// app.post('/addproduct', (req, res) => {
+//   try {
+//     const newProduct = req.body;
 
-// //Delete product
+//     // basic validation (optional but recommended)
+//     if (!newProduct.title || !newProduct.price) {
+//       return res.status(400).json({ message: "name and price are required" });
+//     }
+
+//     // add new product
+//     products.push(newProduct);
+
+//     // save back to file
+//     fs.writeFileSync(
+//       dataPath,
+//       JSON.stringify({ products }, null, 2),
+//       'utf-8'
+//     );
+
+//     res.status(201).json({
+//       message: "Product added successfully",
+//       product: newProduct
+//     });
+
+//   } catch (error) {
+//     console.error("error adding product:", error);
+//     res.status(500).json({
+//       message: "error adding product",
+//       error: error.message
+//     });
+//   }
+// });
 
 
-app.delete("/deleteproduct/:id", (req, res) => {
-  try {
-    const id = req.params.id;
 
-    const deletedProduct = products.find((item) => item.id == id);
 
-    if (!deletedProduct) {
-      return res.status(404).json({
-        message: "Product not found",
-      });
-    }
+// // //Delete product
 
-    products = products.filter((item) => item.id != id);
 
-    // Save updated array to file
-    fs.writeFileSync(
-      "./data.json",
-      JSON.stringify(products, null, 2)
-    );
+// app.delete("/deleteproduct/:id", (req, res) => {
+//   try {
+//     const id = req.params.id;
 
-    res.status(200).json({
-      message: "Product deleted successfully",
-      product: deletedProduct,
-    });
+//     const deletedProduct = products.find((item) => item.id == id);
 
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      message: error.message,
-    });
-  }
-});
+//     if (!deletedProduct) {
+//       return res.status(404).json({
+//         message: "Product not found",
+//       });
+//     }
+
+//     products = products.filter((item) => item.id != id);
+
+//     // Save updated array to file
+//     fs.writeFileSync(
+//       "./data.json",
+//       JSON.stringify(products, null, 2)
+//     );
+
+//     res.status(200).json({
+//       message: "Product deleted successfully",
+//       product: deletedProduct,
+//     });
+
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({
+//       message: error.message,
+//     });
+//   }
+// });
 
 
 // getting-started.js
@@ -107,15 +107,15 @@ app.delete("/deleteproduct/:id", (req, res) => {
 
 
 
-// main().catch(err => console.log(err));
+main().catch(err => console.log(err));
 
-// async function main() {
-//   await mongoose.connect('mongodb+srv://owaisahmedkhan:owais123@cluster0.mbgw7ps.mongodb.net/Mart');
+async function main() {
+  await mongoose.connect('mongodb+srv://owaisahmedkhan:owais123@cluster0.mbgw7ps.mongodb.net/Mart');
 
-//   console.log("MongoDB Connected Successfully!")
+  console.log("MongoDB Connected Successfully!")
 
-//   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
-// }
+  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+}
 
 
 // app.get('/', (req, res) => {
