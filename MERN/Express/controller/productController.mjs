@@ -19,6 +19,58 @@ let index = async (req, res) => {
   }
 }
 
+let create = async (req, res) => {
+  
+      console.log(req.headers);
+      console.log(req.body);
+
+  try {
+    const {
+      title,
+      description,
+      price,
+      discountedPercentage,
+      rating,
+      stock,
+      brand,
+      category,
+      thumbnail,
+      images
+    } = req.body;
+
+    const product = new Product({
+      title,
+      description,
+      price,
+      discountedPercentage,
+      rating,
+      stock,
+      brand,
+      category,
+      thumbnail,
+      images
+    });
+
+    // // mongoose method to save data to database
+    // const addProd = await product.save();
+    // mongodb method to save data to database
+    let addProd = await Product.insertOne(product);
+
+    res.status(201).json({
+      message: "Product created successfully",
+      product: addProd
+    });
+
+  } catch (error) {
+    console.log(error);
+
+    if (error.name === "ValidationError") {
+      return res.status(400).json({ message: error.message });
+    }
+
+    res.status(500).json({ message: error.message });
+  }
+};
 
 
 
