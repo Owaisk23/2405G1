@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
-   title: { type: String, required: [true, "Title is required"] },
+  title: { type: String, required: [true, "Title is required"] },
   description: { type: String },
   price: {
     type: Number,

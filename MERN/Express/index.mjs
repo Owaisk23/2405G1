@@ -2,6 +2,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
+import dotenv from 'dotenv';
 import fs from 'node:fs';
 import productRouter from './routes/productRoutes.mjs';
 const app = express()
@@ -9,7 +10,8 @@ const port = 3000
 
 
 app.use(express.json()); 
-
+app.use(express.urlencoded({ extended: true }));
+dotenv.config();
 // const dirname = path.resolve();
 // const dataPath = './data.json';
 // const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));

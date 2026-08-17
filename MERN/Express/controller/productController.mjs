@@ -242,6 +242,7 @@ let create = async (req, res) => {
 
 const productController = {
   index,
+  create
   // getSingleProduct,
   // addProduct,
   // updateProduct,
