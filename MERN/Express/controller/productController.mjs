@@ -34,7 +34,7 @@ let create = async (req, res) => {
       stock,
       brand,
       category,
-      thumbnail,
+      // thumbnail,
       images
     } = req.body;
 
@@ -47,7 +47,7 @@ let create = async (req, res) => {
       stock,
       brand,
       category,
-      thumbnail,
+      // thumbnail,
       images
     });
 
