@@ -1,13 +1,11 @@
 import express from "express";
+import multer from "multer";
+import { upload } from '../cloudinaryConfig.mjs';
 import productController from "../controller/productController.mjs";
 
 const productRouter = express.Router();
 
 productRouter
   .get("/", productController.index)
-  // .get("/:id", productController.getSingleProduct)
-  .post("/", productController.create);
-  // .put("/:id", productController.updateProduct)
-  // .delete("/:id", productController.deleteProduct);
-
+  .post("/addproduct", upload.single("images"), productController.addProductWithImage);
 export default productRouter;
