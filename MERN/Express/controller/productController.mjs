@@ -8,7 +8,7 @@ import Product from "../model/productModel.mjs";
 let index = async (req, res) => {
   try {
     const products = await Product.find();
-    if(products.length > 0){
+    if (products.length > 0) {
       res.status(200).json({ message: "Products found", products: products });
     } else {
       res.status(404).json({ message: "No products found" });
@@ -20,7 +20,7 @@ let index = async (req, res) => {
 }
 
 // let create = async (req, res) => {
-  
+
 //       console.log(req.headers);
 //       console.log(req.body);
 
@@ -72,43 +72,89 @@ let index = async (req, res) => {
 //   }
 // };
 
-let addProductWithImage=async(req,res)=>{
-try {
-console.log(req.file)
-console.log(req.file.path);
-let newProduct = new Product({
-     title:req.body.title,
-        description:req.body.description,
-        price:req.body.price,
-        discountedPercentage:req.body.discountPercentage,
-        rating:req.body.rating,
-        stock:req.body.stock,
-        brand:req.body.brand,
-        category:req.body.category,
-        thumbnail:req.file.path,
-        images:req.file.path
+// let addProductWithImage=async(req,res)=>{
+// try {
+// console.log(req.file)
+// console.log(req.file.path);
+// let newProduct = new Product({
+//      title:req.body.title,
+//         description:req.body.description,
+//         price:req.body.price,
+//         discountedPercentage:req.body.discountPercentage,
+//         rating:req.body.rating,
+//         stock:req.body.stock,
+//         brand:req.body.brand,
+//         category:req.body.category,
+//         thumbnail:req.file.path,
+//         images:req.file.path
 
-});
+// });
 
-let addprod = await Product.insertOne(newProduct);
-if (!addprod) {
-       res.status(404).json({message:"Failed to add product"});
-} else {
+// let addprod = await Product.insertOne(newProduct);
+// if (!addprod) {
+//        res.status(404).json({message:"Failed to add product"});
+// } else {
 
-    res.status(200).json({
-    message:"Product added successfully",
-    product:addprod,
-})
-} 
+//     res.status(200).json({
+//     message:"Product added successfully",
+//     product:addprod,
+// })
+// } 
 
 
 
-} catch (error) {
-   console.log(error) ;
-   res.status(500).json({message:"Internal server errror"});
+// } catch (error) {
+//    console.log(error) ;
+//    res.status(500).json({message:"Internal server errror"});
+// }
+// }
+
+
+//multiple images
+// image
+let addProductWithImage = async (req, res) => {
+  try {
+    console.log(req.files)
+    let imagesArray = []
+    req.files.forEach(element => {
+      console.log("element", element.path)
+      imagesArray.push(element.path);
+    });
+    console.log(imagesArray)
+
+    // console.log(req.file.path);
+    let newProduct = new Product({
+      title: req.body.title,
+      description: req.body.description,
+      price: req.body.price,
+      discountedPercentage: req.body.discountedPercentage,
+      rating: req.body.rating,
+      stock: req.body.stock,
+      brand: req.body.brand,
+      category: req.body.category,
+      thumbnail: imagesArray[0],
+      images: imagesArray
+
+    });
+
+    let addprod = await Product.insertOne(newProduct);
+    if (!addprod) {
+      res.status(404).json({ message: "Failed to add product" });
+    } else {
+
+      res.status(200).json({
+        message: "Product added successfully",
+        product: addprod,
+      })
+    }
+
+
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server errror" });
+  }
 }
-}
-
 
 
 

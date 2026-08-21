@@ -7,5 +7,7 @@ const productRouter = express.Router();
 
 productRouter
   .get("/", productController.index)
-  .post("/addproduct", upload.single("images"), productController.addProductWithImage);
+  // .post("/addproduct", upload.single("images"), productController.addProductWithImage);
+  .post('/', upload.array('images'), productController.addProductWithImage);
+
 export default productRouter;
