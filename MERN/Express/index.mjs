@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import path from 'path';
 import dotenv from 'dotenv';
 import fs from 'node:fs';
+import userRouter from './routes/userRoutes.mjs';
 import productRouter from './routes/productRoutes.mjs';
 const app = express()
 const port = 3000
@@ -2013,6 +2014,7 @@ let products = [
 
 
 app.use('/products', productRouter);
+app.use('/users', userRouter);
 
 
 app.listen(port, () => {
