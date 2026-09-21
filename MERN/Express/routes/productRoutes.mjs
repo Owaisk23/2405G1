@@ -9,7 +9,7 @@ const productRouter = express.Router();
 productRouter
   // .get("/",productController.index)
 
-  .get("/", userController.auth, productController.index)
+  .get("/", productController.index)
   //          Middleware
   // .post("/addproduct", upload.single("images"), productController.addProductWithImage);
   .post('/', upload.array('images'), productController.addProductWithImage);

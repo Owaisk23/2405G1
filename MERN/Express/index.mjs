@@ -3,6 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import fs from 'node:fs';
 import userRouter from './routes/userRoutes.mjs';
 import productRouter from './routes/productRoutes.mjs';
@@ -11,6 +12,7 @@ const port = 3000
 
 
 app.use(express.json()); 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 dotenv.config();
 // const dirname = path.resolve();
